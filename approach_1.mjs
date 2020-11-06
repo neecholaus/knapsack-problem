@@ -1,3 +1,8 @@
+// THIS WON'T WORK
+// I'm calculating vals and weights in order, but it's possible
+// that items from the middle can be added together to be the
+// most efficiently packed knapsack.
+
 import {items, maxWeight} from './problem';
 
 // sort by val desc
@@ -25,14 +30,20 @@ items.forEach(startingItem => {
     currentTheoreticalKnapsack.items = [startingItem];
 
     // iterate through every item adding val and weight
-    items.forEach(item => {
+    items.every(item => {
         // skip our theories starting item that we did not start with,
         if (item.id === startingItem.id)
-            return;
+            return true;
+
+        // console.log(item.id);
+
+        // add val and weight
+        currentTheoreticalKnapsack.val += item.val;
+        currentTheoreticalKnapsack.w += item.w;
 
         // once max weight is reached / exceeded
         // if max weight == accumulated weight
-        // since we started from highest vals, we have a winner, return list of itemsa
+        // since we started from highest vals, we have a winner, return list of items
         // otherwise weight is higher than allowed
         // remove current item
         // store list of items as potential candidate, move on to next item
