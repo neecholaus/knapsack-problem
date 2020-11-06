@@ -1,3 +1,6 @@
+// THIS WON'T WORK
+// Close, but test 2 fails.
+
 import {items, maxWeight} from './problem';
 
 // sort by val desc
