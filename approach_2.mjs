@@ -3,18 +3,6 @@
 
 import {items, maxWeight} from './problem';
 
-// sort by val desc
-items.sort((a, b) => {
-    if (a.val > b.val)
-        return -1;
-
-    if (a.val < b.val)
-        return 1
-
-    if (a.val === b.val)
-        return 0;
-});
-
 const knapsack = {
     items: [],
     val: 0,
@@ -28,11 +16,11 @@ while (knapsack.w < maxWeight || noMoreTries) {
     // find highest value item not already held
     const bestItem = items.reduce((acc, next) => {
         // skip if in knapsack already
-        // console.log(knapsack.items.map(x => x.id));
         if (knapsack.items.map(x => x.id).indexOf(next.id) >= 0) {
             return acc;
         }
 
+        // if next is more valuable, use as long as it is within weight limit
         if ((next.val > acc.val) && (next.w <= (maxWeight - knapsack.w))) {
             return next;
         }
