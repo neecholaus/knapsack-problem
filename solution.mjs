@@ -1,8 +1,4 @@
 import {items, maxWeight} from './problem';
-const x = {id: 4, w: 5, v: 2};
-const y = {...x};
-delete y.id;
-console.log(y);
 
 // sort by val desc
 // no spaceship operator :(
